@@ -29,6 +29,7 @@ async function run() {
     // await client.connect();
 
     const productCollection = client.db('prodBD').collection('pro');
+    
 
     app.get('/pro', async (req, res) => {
       const products =  productCollection.find();
@@ -44,9 +45,18 @@ async function run() {
 
       const Product = {
         $set: {
-           
+          name:updatedProduct.name,
+          BrandName:updatedProduct.BrandName,
+          Type:updatedProduct.Type,
+          Price:updatedProduct.Price,
+          Des:updatedProduct.Des,
+          Rating:updatedProduct.Rating,
+          Image:updatedProduct.Image
         }
       }
+
+      const result = await productCollection.updateOne(filter,Product,options);
+      res.send(result);
     })
 
     app.get('/pro/:id',async(req,res)=>{
