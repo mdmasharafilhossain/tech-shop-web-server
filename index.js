@@ -36,6 +36,10 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/pro/:id',async(req,res)=>{
+      const id = req.params.body;
+    })
+
     app.get('/pro/:id',async(req,res)=>{
       const id =req.params.id;
       const query = {_id : new ObjectId(id)}
