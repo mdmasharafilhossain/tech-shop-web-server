@@ -37,7 +37,16 @@ async function run() {
     });
 
     app.put('/pro/:id',async(req,res)=>{
-      const id = req.params.body;
+      const id = req.params.id;
+      const filter = {_id: new ObjectId(id)}
+      const options = {upsert:true}
+      const updatedProduct = req.body;
+
+      const Product = {
+        $set: {
+           
+        }
+      }
     })
 
     app.get('/pro/:id',async(req,res)=>{
